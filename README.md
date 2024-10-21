@@ -47,7 +47,7 @@ You can use the following options:
 | `-l`, `--limit`    | Limit of records to be migrated | number | No | 1000 |
 | `-i`, `--insecure` | Allow use remote database as the target database | boolean | No | false |
 | `--timeout` | Allows increasing the default timeout (ms) | number | No | 5000 |
-| `--listen` | Listen changes in target databases\|collections | string | No | |
+| `--listen` | Listen changes in target databases\|collections | string | No | false |
 | `-v`, `--version` | Show version number | boolean | No | |
 | `-h`, `--help` | Show help | boolean | No | |
 
