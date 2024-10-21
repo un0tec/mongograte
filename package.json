@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/un0tec/mongograte#readme",
   "devDependencies": {
-    "@yao-pkg/pkg": "5.15.0",
+    "@yao-pkg/pkg": "5.16.1",
     "esbuild": "0.24.0"
   },
   "dependencies": {
