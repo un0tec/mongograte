@@ -1,0 +1,31 @@
+{
+  "name": "mongograte",
+  "version": "1.0.0",
+  "description": "Tool for migrating MongoDB to MongoDB",
+  "main": "mongograte.js",
+  "scripts": {
+    "start": "node mongograte.js",
+    "help": "node mongograte.js --help",
+    "build": "esbuild mongograte.js --bundle --platform=node --outfile=bin/mongograte.js && pkg bin/mongograte.js --out-path bin --compress GZip",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/un0tec/mongograte.git"
+  },
+  "author": "un0tec",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/un0tec/mongograte/issues"
+  },
+  "homepage": "https://github.com/un0tec/mongograte#readme",
+  "devDependencies": {
+    "@yao-pkg/pkg": "5.15.0",
+    "esbuild": "0.24.0"
+  },
+  "dependencies": {
+    "log4js": "6.9.1",
+    "mongodb": "6.9.0",
+    "yargs": "17.7.2"
+  }
+}
