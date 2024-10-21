@@ -3,6 +3,8 @@
 [![License: MIT](https://img.shields.io/github/license/un0tec/mongograte?color=orange&cache=none)](LICENSE)
 [![Release](https://img.shields.io/github/v/release/un0tec/mongograte?color=green&label=Release)](https://github.com/un0tec/mongograte/releases/latest)
 
+A robust tool for seamless migration of data between MongoDB databases, allowing for efficient synchronization, with support for listening to live changes in the source database.
+
 1. :notebook_with_decorative_cover: [Description](#-description)
 2. :warning: [Before running](#-before-running)
 3. :writing_hand: [Syntax](#-syntax)
@@ -14,42 +16,46 @@
 
 ## # Description
 
-Tool for migrating MongoDB to MongoDB
+`mongograte` is a command-line tool designed to facilitate the migration of MongoDB collections and databases from a source server to a target server. It supports options for clearing existing data, limiting the number of documents to migrate, and listening to changes for real-time synchronization.
 
 ## # Before Running
 
-Download and place the script in the desired path. Then assign execute permissions to the script with the following command:
+Download and place the script in the desired path. To make the script executable, you can assign the appropriate permissions:
 
     sudo chmod +x ./mongograte
 
-If you want to  run the script from anywhere on the system, place the file in `/usr/local/bin` directory or add the folder where it is to the `$PATH` system variable.
+For convenience, you may want to move the script to `/usr/local/bin` or add its directory to your system's `$PATH` variable to run it from anywhere.
 
 ## # Syntax
+
+The general syntax for using `mongograte` is:
 
     mongograte [OPTIONS]
 
 ## # Usage
 
-    mongograte [OPTIONS]
+Basic usage example:
+
+    mongograte -d myDatabases -s mongodb://remotehost:port -t mongodb://localhost:port
 
 You can see default values in [options](#-options) section
 
 ## # Options
 
-You can use the following options:
+The following command-line options are supported:
 
 | Option | Description | Type | Required  | Default value |
 |-----------------|---------------------------------------------------------------|---------------|------------|----------------|
-| `-d`, `--databases` | Target databases | array | Yes | |
-| `-s`, `--source` | Source server uri | string | Yes | |
-| `-t`, `--target` | Target server uri | string | Yes | |
-| `-c`, `--clear` | Drop collections in the target database | boolean | No | false |
-| `-l`, `--limit`    | Limit of records to be migrated | number | No | 1000 |
-| `-i`, `--insecure` | Allow use remote database as the target database | boolean | No | false |
-| `--timeout` | Allows increasing the default timeout (ms) | number | No | 5000 |
-| `--listen` | Listen changes in target databases\|collections | string | No | false |
+| `-d`, `--databases` | List of target databases to migrate | array | Yes | |
+| `-s`, `--source` | Source MongoDB server URI | string | Yes | |
+| `-t`, `--target` | Target MongoDB server URI | string | Yes | |
+| `-c`, `--clear` | Drop collections in the target database before migration | boolean | No | false |
+| `-l`, `--limit`    | Maximum number of records to migrate per collection | number | No | 1000 |
+| `-i`, `--insecure` | Allow using a remote database as the target | boolean | No | false |
+| `--timeout` | Timeout for MongoDB connection (ms) | number | No | 5000 |
+| `--listen` | Enable real-time synchronization of source database changes | string | No | false |
 | `-v`, `--version` | Show version number | boolean | No | |
-| `-h`, `--help` | Show help | boolean | No | |
+| `-h`, `--help` | Display help information | boolean | No | |
 
 ## # Preview
 
