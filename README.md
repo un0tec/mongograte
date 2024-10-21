@@ -10,7 +10,7 @@ A robust tool for seamless migration of data between MongoDB databases, allowing
 3. :writing_hand: [Syntax](#-syntax)
 4. :hammer: [Usage](#-usage)
 5. :bookmark_tabs: [Options](#-options)
-6. :monocle_face: [Preview](#-preview)
+6. :monocle_face: [Examples](#-examples)
 7. :page_with_curl: [License](#-license)
 8. :heart: [Contribution](#-contributing)
 
@@ -36,7 +36,7 @@ The general syntax for using `mongograte` is:
 
 Basic usage example:
 
-    mongograte -d myDatabases -s mongodb://remotehost:port -t mongodb://localhost:port
+    mongograte -d myDatabases -s mongodb://host:port -t mongodb://host:port
 
 You can see default values in [options](#-options) section
 
@@ -57,9 +57,21 @@ The following command-line options are supported:
 | `-v`, `--version` | Show version number | boolean | No | |
 | `-h`, `--help` | Display help information | boolean | No | |
 
-## # Preview
+## # Examples
 
---
+**Migrating a Database with Specific Options**
+
+To migrate the testDB from a local server to a remote server with the collection drop option enabled and a limit of 500 records, use:
+
+
+    mongograte -d testDB -s mongodb://localhost:port -t mongodb://remotehost:port -c -l 500
+
+**Real-Time Synchronization**
+
+To listen for changes in the source database and apply them to the target, use the --listen flag:
+
+    mongograte -d myDatabase -s mongodb://host:port -t mongodb://host:port --listen
+This will keep your target database in sync with the source in near real-time.
 
 ## # License
 
