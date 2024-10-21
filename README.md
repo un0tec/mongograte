@@ -43,7 +43,7 @@ You can use the following options:
 | `-d`, `--databases` | Target databases | array | Yes | |
 | `-s`, `--source` | Source server uri | string | Yes | |
 | `-t`, `--target` | Target server uri | string | Yes | |
-| `-c`, `--clear` | Drop collections in the target database | boolean | No | "false" |
+| `-c`, `--clear` | Drop collections in the target database | boolean | No | false |
 | `-l`, `--limit`    | Limit of records to be migrated | number | No | 1000 |
 | `-i`, `--insecure` | Allow use remote database as the target database | boolean | No | false |
 | `--timeout` | Allows increasing the default timeout (ms) | number | No | 5000 |
