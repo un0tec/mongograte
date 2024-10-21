@@ -1,6 +1,6 @@
 # mongograte
 
-[![License: MIT](https://img.shields.io/github/license/un0tec/mongograte?color=orange)](LICENSE)
+[![License: MIT](https://img.shields.io/github/license/un0tec/mongograte?color=orange&cache=none)](LICENSE)
 [![Release](https://img.shields.io/github/v/release/un0tec/mongograte?color=green&label=Release)](https://github.com/un0tec/mongograte/releases/latest)
 
 1. :notebook_with_decorative_cover: [Description](#-description)
