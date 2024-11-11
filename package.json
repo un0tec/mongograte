@@ -20,12 +20,12 @@
   },
   "homepage": "https://github.com/un0tec/mongograte#readme",
   "devDependencies": {
-    "@yao-pkg/pkg": "5.16.1",
+    "@yao-pkg/pkg": "6.1.0",
     "esbuild": "0.24.0"
   },
   "dependencies": {
     "log4js": "6.9.1",
-    "mongodb": "6.9.0",
+    "mongodb": "6.10.0",
     "yargs": "17.7.2"
   }
 }
