@@ -27,7 +27,7 @@ const args = yargs
         alias: 'c',
         description: 'Drop collections in the target database',
         type: 'boolean',
-        default: 'false'
+        default: false
     })
     .option('limit', {
         alias: 'l',
