@@ -67,8 +67,7 @@ The following command-line options are supported:
 
 To migrate the testDB from a local server to a remote server with the collection drop option enabled and a limit of 500 records, use:
 
-
-    mongograte -d testDB -s mongodb://localhost:port -t mongodb://remotehost:port -c -l 500
+    mongograte -d testDB -s mongodb://localhost:port -t mongodb://remotehost:port --drop -l 500
 
 **Real-Time Synchronization**
 
