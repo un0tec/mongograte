@@ -20,7 +20,7 @@ A robust tool for seamless migration of data between MongoDB databases, allowing
 
 ## # Before Running
 
-Download and place the script in the desired path. To make the script executable, you can assign the appropriate permissions:
+Download and place the script in the desired path. For Linux, to make the script executable, you should assign the appropriate permissions:
 
     sudo chmod +x ./mongograte
 
@@ -46,16 +46,20 @@ The following command-line options are supported:
 
 | Option | Description | Type | Required  | Default value |
 |-----------------|---------------------------------------------------------------|---------------|------------|----------------|
-| `-d`, `--databases` | List of target databases to migrate | array | Yes | |
-| `-s`, `--source` | Source MongoDB server URI | string | Yes | |
-| `-t`, `--target` | Target MongoDB server URI | string | Yes | |
-| `-c`, `--clear` | Drop collections in the target database before migration | boolean | No | false |
+| `-d`, `--databases` | List of target databases to migrate | array | Yes | - |
+| `-s`, `--source` | Source MongoDB server URI | string | Yes | - |
+| `-t`, `--target` | Target MongoDB server URI | string | Yes | - |
+| `--collections` | Collections to be migrated from source database | string | No | - |
+| `--drop` | Drop target collections in the target database before migration | boolean | No | false |
+| `--drop-all` | Drop all collections in the target database before migration | boolean | No | false |
+| `--truncate` | Truncate target collections in the target database before migration | boolean | No | true |
 | `-l`, `--limit`    | Maximum number of records to migrate per collection | number | No | 1000 |
-| `-i`, `--insecure` | Allow using a remote database as the target | boolean | No | false |
 | `--timeout` | Timeout for MongoDB connection (ms) | number | No | 5000 |
-| `--listen` | Enable real-time synchronization of source database changes | string | No | false |
-| `-v`, `--version` | Show version number | boolean | No | |
-| `-h`, `--help` | Display help information | boolean | No | |
+| `--listen` | Enable real-time synchronization of source database changes | boolean | No | false |
+| `-i`, `--insecure` | Allow using a remote database as the target | boolean | No | false |
+| `--skip-update` | Skip checking for updates | boolean | No | false |
+| `-v`, `--version` | Show version number | boolean | No | - |
+| `-h`, `--help` | Display help information | boolean | No | - |
 
 ## # Examples
 
