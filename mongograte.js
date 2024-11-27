@@ -32,6 +32,7 @@ import info from './package.json' with {type: 'json'};
             dropAll: args.dropAll,
             truncate: args.truncate,
             limit: args.limit,
+            queryLimit: args.queryLimit,
             timeout: args.timeout,
             listen: args.listen,
             insecure: args.insecure,
@@ -103,6 +104,11 @@ import info from './package.json' with {type: 'json'};
             .option('limit', {
                 alias: 'l',
                 description: 'Limit of records to be migrated',
+                type: 'number',
+                default: 1000
+            })
+            .option('query-limit', {
+                description: 'Limit of records per query',
                 type: 'number',
                 default: 1000
             })
@@ -245,7 +251,7 @@ import info from './package.json' with {type: 'json'};
         log.debug('    Records: ' + (await sourceCollection.countDocuments()));
 
         const documents = [];
-        const BATCH_SIZE = 1000;
+        const BATCH_SIZE = config.queryLimit;
         const cursor = sourceCollection.find().limit(config.limit).batchSize(BATCH_SIZE);
         let count = 0;
 
