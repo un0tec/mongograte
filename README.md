@@ -54,6 +54,7 @@ The following command-line options are supported:
 | `--drop-all` | Drop all collections in the target database before migration | boolean | No | false |
 | `--truncate` | Truncate target collections in the target database before migration | boolean | No | true |
 | `-l`, `--limit`    | Maximum number of records to migrate per collection | number | No | 1000 |
+| `--query-limit`    | Maximum number of records per query | number | No | 1000 |
 | `--timeout` | Timeout for MongoDB connection (ms) | number | No | 5000 |
 | `--listen` | Enable real-time synchronization of source database changes | boolean | No | false |
 | `-i`, `--insecure` | Allow using a remote database as the target | boolean | No | false |
