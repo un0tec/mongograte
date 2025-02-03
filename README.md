@@ -49,7 +49,8 @@ The following command-line options are supported:
 | `-d`, `--databases` | List of target databases to migrate | array | Yes | - |
 | `-s`, `--source` | Source MongoDB server URI | string | Yes | - |
 | `-t`, `--target` | Target MongoDB server URI | string | Yes | - |
-| `--collections` | Collections to be migrated from source database | string | No | - |
+| `--migrate-collections` | Collections to migrate from the source database | string | No | - |
+| `--ignore-collections` | Collections to exclude from the migration process | string | No | - |
 | `--drop` | Drop target collections in the target database before migration | boolean | No | false |
 | `--drop-all` | Drop all collections in the target database before migration | boolean | No | false |
 | `--truncate` | Truncate target collections in the target database before migration | boolean | No | true |

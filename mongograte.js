@@ -37,7 +37,8 @@ import { checkUpdate } from './update-notifier.js';
             databases: args.databases,
             sourceDB: args.source,
             targetDB: args.target,
-            collections: args.collections,
+            migrateCollections: args.migrateCollections,
+            ignoreCollections: args.ignoreCollections,
             drop: args.drop,
             dropAll: args.dropAll,
             truncate: args.truncate,
@@ -73,7 +74,7 @@ import { checkUpdate } from './update-notifier.js';
 
     function getYargs() {
         const yarg = yargs(hideBin(process.argv));
-        return yarg.scriptName("mongograte").usage('Usage: $0 [options]')
+        return yarg.scriptName(pkg.name).usage('Usage: $0 [options]')
             .option('databases', {
                 alias: 'd',
                 description: 'Target databases',
@@ -92,8 +93,12 @@ import { checkUpdate } from './update-notifier.js';
                 type: 'string',
                 demandOption: true,
             })
-            .option('collections', {
-                description: 'Collections to be migrated from source database',
+            .option('migrate-collections', {
+                description: 'Collections to migrate from the source database',
+                type: 'array'
+            })
+            .option('ignore-collections', {
+                description: 'Collections to exclude from the migration process',
                 type: 'array'
             })
             .option('drop', {
@@ -157,7 +162,7 @@ import { checkUpdate } from './update-notifier.js';
                 return true;
             })
             .hide('verbose')
-            .version('1.0.0').alias('version', 'v')
+            .version(pkg.version).alias('version', 'v')
             .showHelpOnFail(false, 'Specify --help for available options')
             .help().alias('help', 'h')
             .parserConfiguration({
@@ -200,8 +205,12 @@ import { checkUpdate } from './update-notifier.js';
 
                 let sourceCollections = (await sourceDb.listCollections().toArray()).map(collection => collection.name);
 
-                if (config.collections) {
+                if (config.migrateCollections) {
                     sourceCollections = getUserCollections(sourceCollections);
+                }
+
+                if (config.ignoreCollections) {
+                    sourceCollections = sourceCollections.filter(collection => !config.ignoreCollections.includes(collection))
                 }
 
                 sourceCollections.sort();
@@ -231,13 +240,13 @@ import { checkUpdate } from './update-notifier.js';
     }
 
     function getUserCollections(sourceCollections) {
-        let nonExistingCollections = config.collections.filter(collection => !sourceCollections.includes(collection));
+        let nonExistingCollections = config.migrateCollections.filter(collection => !sourceCollections.includes(collection));
 
         if (nonExistingCollections.length > 0) {
             throw new Error(`The following collections do not exist in the source database: ${nonExistingCollections.join(", ")}`);
         }
 
-        return config.collections;
+        return config.migrateCollections;
     }
 
     function migrateDbInitLog(db) {
