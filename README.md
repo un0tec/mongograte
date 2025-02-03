@@ -7,8 +7,8 @@ A robust tool for seamless migration of data between MongoDB databases, allowing
 
 1. :notebook_with_decorative_cover: [Description](#-description)
 2. :warning: [Before running](#-before-running)
-3. :writing_hand: [Syntax](#-syntax)
-4. :hammer: [Usage](#-usage)
+3. :hammer: [Installation](#-installation)
+4. :writing_hand: [Usage](#-usage)
 5. :bookmark_tabs: [Options](#-options)
 6. :monocle_face: [Examples](#-examples)
 7. :page_with_curl: [License](#-license)
@@ -26,11 +26,11 @@ Download and place the script in the desired path. For Linux, to make the script
 
 For convenience, you may want to move the script to `/usr/local/bin` or add its directory to your system's `$PATH` variable to run it from anywhere.
 
-## # Syntax
+## # Installation
 
-The general syntax for using `mongograte` is:
+`npm i -g mongograte`
 
-    mongograte [OPTIONS]
+`mongograte` is also available as a binary in releases page
 
 ## # Usage
 
