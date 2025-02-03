@@ -1,9 +1,12 @@
 {
   "name": "mongograte",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "description": "Tool for migrating MongoDB to MongoDB",
   "type": "module",
   "exports": "./mongograte.js",
+  "bin": {
+    "mongograte": "mongograte.js"
+  },
   "scripts": {
     "start": "node mongograte.js",
     "help": "node mongograte.js --help --skip-update",
