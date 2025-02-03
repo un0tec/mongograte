@@ -1,16 +1,26 @@
+#!/usr/bin/env node --no-warnings=ExperimentalWarning
 import { MongoClient } from 'mongodb';
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 import log4js from 'log4js';
-import axios from 'axios';
 import chalk from 'chalk';
-import info from './package.json' with {type: 'json'};
+import pkg from './package.json' with {type: 'json'};
+import { checkUpdate } from './update-notifier.js';
 
 (async () => {
 
     const argv = yargs(hideBin(process.argv)).exitProcess(false).help(false).parse();
 
-    await checkForUpdate(argv.skipUpdate);
+    if (argv.skipUpdate !== true) {
+        const updateAvailable = await checkUpdate({
+            author: pkg.author,
+            repository: pkg.repository.name,
+            name: pkg.name,
+            version: pkg.version
+        });
+
+        if (updateAvailable) { process.exit(); }
+    }
 
     const args = getYargs();
     const config = buildConfig(args);
@@ -325,32 +335,6 @@ import info from './package.json' with {type: 'json'};
                     log.debug(`Operation not supported: ${change.operationType}`);
             }
         });
-    }
-
-    async function checkForUpdate(skipUpdate = false) {
-
-        if (skipUpdate) return;
-
-        const { version, author, name } = info;
-        let updateAvailable = false;
-
-
-        try {
-            const response = await axios.get(`https://api.github.com/repos/${author}/${name}/releases/latest`);
-            const latestVersion = response.data.tag_name;
-
-            if (version !== latestVersion) {
-                updateAvailable = true;
-            }
-        } catch (error) {
-            console.error(`Error checking updates, go to: https://github.com/${author}/${name}/releases/latest`);
-        }
-
-        if (updateAvailable) {
-            console.error("A new version is available!");
-            console.error(`Please update ${name}: https://github.com/${author}/${name}/releases/latest`);
-            process.exit(2);
-        }
     }
 
 })();
