@@ -10,7 +10,6 @@
   "scripts": {
     "start": "node mongograte.js",
     "help": "node mongograte.js --help --skip-update",
-    "build": "esbuild mongograte.js --bundle --platform=node --outfile=bin/mongograte.js && pkg bin/mongograte.js --out-path bin --compress GZip",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -25,14 +24,11 @@
   },
   "homepage": "https://github.com/un0tec/mongograte#readme",
   "dependencies": {
-    "axios": "1.7.9",
+    "axios": "1.8.4",
     "chalk": "5.4.1",
     "log4js": "6.9.1",
-    "mongodb": "6.13.0",
-    "yargs": "17.7.2"
-  },
-  "devDependencies": {
-    "@yao-pkg/pkg": "6.3.0",
-    "esbuild": "0.24.2"
+    "mongodb": "6.15.0",
+    "yargs": "17.7.2",
+    "semver": "7.7.1"
   }
 }
