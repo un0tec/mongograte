@@ -20,17 +20,11 @@ A robust tool for seamless migration of data between MongoDB databases, allowing
 
 ## # Before Running
 
-Download and place the script in the desired path. For Linux, to make the script executable, you should assign the appropriate permissions:
-
-    sudo chmod +x ./mongograte
-
-For convenience, you may want to move the script to `/usr/local/bin` or add its directory to your system's `$PATH` variable to run it from anywhere.
+N/A
 
 ## # Installation
 
 `npm i -g mongograte`
-
-`mongograte` is also available as a binary in releases page
 
 ## # Usage
 
